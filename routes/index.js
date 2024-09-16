@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
 });
 router.post('/', function(req, res, next) {
   console.table(req.body);
+  
   res.render('index', { title: 'La pizza de la MAMA!' });
 });
 module.exports = router;

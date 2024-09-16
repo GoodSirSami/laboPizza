@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="FR-fr">
+
+<head>
+  <title>
+    <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <h1><%= title %></h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Element</th>
+                <th>Valeur</th>
+                <th>Prix</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% var total = 0; %>
+            <% var extIngPlus = 0; %>
+            <% var quantite = 0 %>
+            <% Object.keys(post).forEach(function (y) { %>
+                <% if(y == 'pizza' || y == 'taille' || y == 'qte' || y == 'ing') { %>
+                    <% if (y == 'pizza') { %> 
+                        <tr>
+                            <td>
+                                Pizza
+                            </td>
+                                <% if (post[y] == 'alldressed') { %>
+                                    <td>All Dressed</td>
+                                    <td>8,10$</td>
+                                    <% total += 8.1 %>
+                                <% } %>
+                                <% if (post[y] == 'margherita') { %>
+                                    <td>Margherita</td>
+                                    <td>6,30$</td>
+                                    <% total += 6.3 %>
+                                <% } %>
+                                <% if (post[y] == 'hawaiian') { %>
+                                    <td>Hawaiian</td>
+                                    <td>7,10$</td>
+                                    <% total += 7.1 %>
+                                <% } %>
+                            </td>
+                        </tr>
+                    <% } %>
+                    <% if (y == 'qte') { %> 
+                        <tr>
+                            <td>
+                                Quantité
+                            </td>
+                            <td>
+                                <%= post[y] %>
+                            </td>
+                            <td>
+                                X <%= post[y] %>
+                            </td>
+                        </tr>
+                        <% total *= post[y] %>
+                        <% quantite = post[y] %>
+                    <% } %>
+                    <% if (y == 'taille') { %>
+                        <tr>
+                            <td>
+                                Taille
+                            </td>
+                            <% if (post[y] == 'small') { %>
+                                <td>Small</td>
+                                <td>X 0.8</td>
+                                <% total *= 0.8 %>
+                            <% } else if (post[y] == 'medium') { %>
+                                <td>Medium</td>
+                                <td>X 1</td>
+                            <% } else if (post[y] == 'large') { %>
+                                <td>Large</td>
+                                <td>X 1.2</td>
+                                <% total *= 1.2 %>
+                            <% } %>
+                        </tr>
+                    <% } %>
+                    <% if (y == 'ing') { %>
+                        <tr>
+                            <td>
+                                Ingredients supplémentaires
+                            </td>
+                            <td>
+                                <% if (Array.isArray(post[y])) { %>
+                                    <%Object.keys(post[y]).forEach(function (z) {%>
+                                        + <%= post[y][z] %>
+                                        <% extIngPlus++ %>
+                                    <% }); %>
+                                <% } else { %>
+                                    + <%= post[y] %>
+                                    <% extIngPlus++ %>
+                                <% } %>
+                            </td>
+                            <td>
+                                + 0,50$ / ing / pizza
+                            </td>
+                            <% total += (0.5 * extIngPlus) * quantite %>
+                        </tr>
+                    <% } %>
+                <% } %>
+            <% }); %>
+            <tr>
+                <td>
+                    Total (sans taxes):
+                </td>
+                <td></td>
+                <td>
+                    <%= Number.parseFloat(total).toFixed(2) %> $
+                </td>
+            </tr>
+            <tr></tr>
+                <td>
+                    Total (avec taxes):
+                </td>
+                <td></td>
+                <td>
+                    <%= Number.parseFloat(total * 1.14975).toFixed(2) %> $
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
