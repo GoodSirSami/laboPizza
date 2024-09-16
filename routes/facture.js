@@ -1,3 +1,9 @@
+/**
+ * @author Samuel Des Cormiers
+ * @date 2024/09/16
+ * @description Route pour la page de facture
+ * @version 1.0
+ */
 var express = require('express');
 var router = express.Router();
 

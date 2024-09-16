@@ -1,3 +1,11 @@
+/**
+ * @api {get} /facture/:id Request Facture information
+ * @author Samuel Des Cormiers
+ * @date 2024/09/16
+ * @description Backend et app pour la facture
+ * @version 3.0
+ */
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');

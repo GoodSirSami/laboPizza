@@ -1,10 +1,15 @@
+<!--
+* !!--!! Pour une raison ou une autre W3C ne reconnait pas les balises ejs comme des balises HTML !!--!!
+*   @author Samuel Des Cormiers
+*   @version 1.0
+*   @date 2024/09/16
+*   @description: Page de facturation de la commande
+-->
 <!DOCTYPE html>
 <html lang="FR-fr">
 
 <head>
-  <title>
-    <%= title %>
-    </title>
+    <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
@@ -20,7 +25,7 @@
 
 <body>
     <h1><%= title %></h1>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>Element</th>
@@ -124,7 +129,7 @@
                     <%= Number.parseFloat(total).toFixed(2) %> $
                 </td>
             </tr>
-            <tr></tr>
+            <tr>
                 <td>
                     Total (avec taxes):
                 </td>
@@ -135,6 +140,8 @@
             </tr>
         </tbody>
     </table>
+    <br>
+    <a href="/"><button type="button" class="btn btn-primary">Retour</button></a>
 </body>
 
 </html>
