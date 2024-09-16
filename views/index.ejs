@@ -1,11 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="FR-fr">
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css'>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>
+      <%= title %>
+    </h1>
+    <form name="commande" method="post">
+      <label >Type de pizza :<br></label>
+      <input type="radio" id="margherita" name="pizza" value="margherita" checked="checked"> Margherita 
+      <br>
+      <input type="radio" id="alldressed" name="pizza" value="alldressed"> All Dressed 
+      <br>
+      <input type="radio" id="hawaiian" name="pizza" value="hawaiian"> Hawaiian 
+      <br> 
+      <br>
+      <label for="qte">Quantité :<br></label>
+      <input type="number" id="qte" name="qte" value="1" min="1" max="99"> <br>
+      <br>
+      <label for="taille">Taille :<br></label>
+      <select id="taille" name="taille">
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+      </select><br>
+      <br>
+      <label for="adresse">Adresse de livraison :<br></label>
+      <textarea name="adresse" id="adresse" required></textarea> <br>
+      <br>
+      <label for="codePostal">Code Postal : <br></label>
+      <input type="text" id="codePostal" name="codePostal" placeholder="A1A 1A1" pattern="[a-zA-Z]\d[a-zA-Z]\s\d[a-zA-Z]\d$|[a-zA-Z]\d[a-zA-Z]\d[a-zA-Z]\d$" required> 
+      <br>
+      <br>
+      <label for="telephone">Téléphone : <br></label>
+      <input type="text" id="telephone" name="telephone" placeholder="450-123-4567" pattern="\d{3}-\d{3}-\d{4}$" required>
+      <br>
+      <br>
+      <label for="courriel">Courriel : <br></label>
+      <input type="email" id="courriel" name="courriel" placeholder="exemple@hotmail.com" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required> 
+      <br>
+      <br>
+      <label for="nom">Nom :<br></label>
+      <input type="text" id="nom" name="nom" value=""> 
+      <br>
+      <br>
+      <label for="prenom">Prénom :<br></label>
+      <input type="text" id="prenom" name="prenom" value=""> 
+      <br>
+      <br>
+      <label for="modePaiement">Mode de paiement :<br></label>
+      <select name="modePaiement" id="modePaiement">
+        <option value="visa">Visa</option>
+        <option value="mastercard">Mastercard</option>
+        <option value="paypal">Paypal</option>
+      </select><br>
+      <br>
+      <input type="submit" value="Commander">
+    </form>
   </body>
 </html>
